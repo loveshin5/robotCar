@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="HTML test for Arduino Robot Car">
+<meta name="keywords" content="HTML,Robot Car,自走車,Arduino,Wemos D1 R2">
+<meta name="author" content="Clare Lin,mvpvalentine4@gmail.com">
+<link href="images/circuit.png" rel="shortcut icon">
+<title>Arduino Robot Car</title>
+<link rel="stylesheet" type="text/css" href="ARCweb.css">
+<script language="javascript" src="jquery-3.5.1.min.js"></script>
+<script>
+	function funonoff(ny)
+  {
+    if( ny == "on")
+    {
+      document.getElementById("myonoffswitch").value="off";
+    }
+    else
+	  {
+      document.getElementById("myonoffswitch").value = "on" ;
+    }
+  }
+	
+	function chkinfo(obj)
+	{
+    if( obj == "fight" )
+	  {
+      document.getElementById("fight1").value = "normal" ;
+    }
+    else
+	  {
+      document.getElementById("fight1").value = "fight" ;
+    }
+  }
+
+  function chkStatus(v)
+  {
+    if(document.getElementById("myonoffswitch").value == "on")
+    {
+      fun1(v);
+    }
+  }
+	
+	function fun1(x)
+    {
+		var y=document.getElementById("fight1").value;
+    	$.post("http://192.168.1.163",{t1:x,ms:y},function(d,s)
+    	{
+    		document.getElementById("sp1").innerHTML=d;
+    	});
+    }
+</script>
+
+</head>
+<body>
+  <div class="bg"><img src="images/walle.jpg"></div>
+<form id="f1" name="f1" style=" margin-left:150px;" >
+  <table id="tab1" name="tab1">
+    <tr>
+      <th> <h2 class="col">自走車網頁遙控器<br>
+        Arduino Robot Car-Remote control Web</h2> 
+      </th>
+    </tr>
+    <tr>
+      <td align="right""><button type="button" id="fight1" name="fight1" value="normal"  onClick="chkinfo(this.value)"><img src="images/fight.png" width="150" height="102" ></button></td>
+    </tr>
+    <tr>
+    <td>
+    <table align="center">
+      <tr>
+        <td>&nbsp;</td>
+        <td><button type="button" id="front" name="front" class="bt" onClick="chkStatus(1)"><img src="images/next3.png" width="100" height="100"></button></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><button type="button" id="left" name="left" class="bt" onClick="chkStatus(2)"><img src="images/next4.png" width="100" height="100"></button></td>
+        <td><button type="button" id="stop" name="stop" class="bt" onClick="chkStatus(0)"><img src="images/stop.png" width="100" height="100"></button></td>
+        <td><button type="button" id="right" name="right" class="bt" onClick="chkStatus(3)"><img src="images/next1.png" width="100" height="100"></button></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><button type="button" id="back" name="back" class="bt" onClick="chkStatus(4)"><img src="images/next2.png" width="100" height="100"></button></td>
+        <td>&nbsp;</td>
+      </tr>  
+    </table>    
+    </td>
+    </tr>
+    <tr>
+        <td align="right">
+          <div class="onoffswitch">
+            <input type="checkbox" value="off" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked onclick="funonoff(this.value)">
+            <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td><span class="col">狀態：</span><span id="sp1" name="sp1" class="col"></span></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
