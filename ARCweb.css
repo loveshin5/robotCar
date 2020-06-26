@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+.col
+{
+	color: antiquewhite;
+}
+
+.bg
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -999;
+}
+.bg img
+{
+	min-height: 100%;
+	width: 100%;
+}
+
+#tab1
+{
+	background-image:url(images/formbg1.jpg);
+	border-style: solid;
+	border-color:#69C;
+}
+
+.bt
+{
+	border:0;
+	background:none;
+	background-color:none;
+	-webkit-clip-path:circle(50% at 50% 50%);
+}
+
+#fight1
+{
+	border:0;
+	background:none;
+	background-color:none;
+	width:160px;
+	height:100px;
+}
+
+.onoffswitch {
+    position: relative; width: 124px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 25px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 41px; padding: 0; line-height: 41px;
+    font-size: 21px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 26px;
+	background-color: #34A7C1; color: #FFFFFF;
+	text-align: left;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 26px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 24px; margin: 8.5px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 79px;
+    border: 2px solid #999999; border-radius: 25px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
